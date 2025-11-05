@@ -1,10 +1,13 @@
+import { Login } from "../components/Login";
+import { Container } from "react-bootstrap";
+
 function Home() {
 
     return(
-        <>
+        <Container>
           <h1>Home</h1>
-          <p>formulario de inicio de sesion</p>
-        </>
+          <Login />
+        </Container>
         
     )
 };

@@ -1,0 +1,12 @@
+.navBg {
+    background-color: rgb(7, 86, 151);
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+section{
+    background-color: rgb(195, 253, 255);
+    text-shadow: 3px, 3px rgba(50,50,70,0.5);
+    color: rgb(0, 0, 0);
+    height: 110vh;
+}
