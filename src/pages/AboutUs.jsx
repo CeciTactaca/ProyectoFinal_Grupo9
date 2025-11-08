@@ -1,10 +1,12 @@
+import { Container } from "react-bootstrap";
+
 function AboutUs() {
 
     return(
-        <>
-          <h1>Somos el Grupo 9</h1>
+        <Container>
+          <h1>Sobre Nosotros</h1>
           <p>En esta parte colocar nuestros nombres y los link a GitHub</p>
-        </>
+        </Container>
         
     )
 };

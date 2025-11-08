@@ -38,7 +38,7 @@ function Layout() {
                                 <NavDropdown.Divider />
                             </NavDropdown>
                             {isAuthenticated ?
-                                (<Button variant="outline-success" onClick={manejarLogout}>Cerrar Sesion</Button>)
+                                (<Button variant="success" onClick={manejarLogout}>Cerrar Sesion</Button>)
                                 : (<Nav.Link href="/">Iniciar Sesion</Nav.Link>)}
                         </Nav>
                     </Navbar.Collapse>
