@@ -2,6 +2,9 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import { useAutorizacion } from "../hooks/useAutorizacion";
 import { Container, Form, Button, Card, Alert } from "react-bootstrap"
+import { FaUserCircle } from "react-icons/fa";
+import { TbLockFilled } from "react-icons/tb";
+
 
 export const Login = () => {
     const [username, setUsername] = useState('');
@@ -13,7 +16,7 @@ export const Login = () => {
     useEffect(() => {
         if (isAuthenticated) {
             if (user?.rol === 'ADMINISTRATIVO') {
-                navigate('/proyectos', { replace: true });
+                navigate('/aboutus', { replace: true });
             } else if (user?.rol === 'ALUMNO') {
                 navigate('/aboutus', { replace: true });
             } else {
@@ -49,15 +52,15 @@ export const Login = () => {
                         </Card.Title>
                         <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-4" controlId="formBasicUsername">
-                                <Form.Label>Usuario</Form.Label>
+                                <Form.Label><FaUserCircle size={20} color="black" /> Usuario</Form.Label>
                                 <Form.Control
                                     type="text" placeholder="Ingresa tu usuario"
                                     value={username} onChange={(e) => setUsername(e.target.value)}
                                     required />
                             </Form.Group>
-                            
+
                             <Form.Group className="mb-4" controlId="formBasicPassword">
-                                <Form.Label>Contraseña</Form.Label>
+                                <Form.Label><TbLockFilled size={20} color="black"/> Contraseña</Form.Label>
                                 <Form.Control
                                     type="password" placeholder="Ingresa tu contraseña"
                                     value={password} onChange={(e) => setPassword(e.target.value)}
