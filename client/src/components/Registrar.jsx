@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Button, Col, Row } from "react-bootstrap";
+import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -90,7 +90,7 @@ function Registrar() {
     const passwordInvalido = Object.values(errorPassword).some(error => error);
 
     return (
-        <>
+        <Container>
             <Form noValidate validated={validado} onSubmit={manejarSubmit} className="p-4 border rounded shadow">
                 <Row className="mb-3" >
                     <Form.Group as={Col} md="6" className="mb-3" controlId="validacionNombre">
@@ -154,7 +154,7 @@ function Registrar() {
                     Iniciar Sesión
                 </Button>
             </Form>
-        </>
+        </Container>
     )
 }
 
