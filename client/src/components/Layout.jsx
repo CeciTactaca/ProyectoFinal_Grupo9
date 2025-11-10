@@ -28,17 +28,23 @@ function Layout() {
                         <Nav className="me-auto">
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/aboutus">AboutUs</Nav.Link>
+
+                            {isAuthenticated && user?.rol === 'ALUMNO'
+                                && (<Nav.Link href="/games">Game</Nav.Link>)}
+
                             {isAuthenticated && user?.rol === 'ADMINISTRATIVO'
-                            && (<Nav.Link href="/proyectos">Proyectos</Nav.Link>)}
-                            <NavDropdown title="More" id="basic-nav-dropdown">
-                                
-                                    {isAuthenticated && user?.rol === 'ALUMNO'
-                                    && (<NavDropdown.Item href="/games">Game</NavDropdown.Item>)}
-                                <NavDropdown.Item href="/Error">Pagina de error</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                            </NavDropdown>
+                                && (
+                                    <NavDropdown title="Proyectos" id="basic-nav-dropdown">
+                                        <NavDropdown.Item href="/proyecto2">Proyecto 2</NavDropdown.Item>
+                                        <NavDropdown.Item href="/proyecto3">Proyecto 3</NavDropdown.Item>
+                                        <NavDropdown.Item href="/proyecto4">Proyecto 4</NavDropdown.Item>
+                                        <NavDropdown.Item href="/proyecto5">Proyecto 5</NavDropdown.Item>
+                                    </NavDropdown>
+                                )}
+                            <Nav.Link href="/Error">Pagina de error</Nav.Link>
+                            <NavDropdown.Divider />
                             {isAuthenticated ?
-                                (<Button variant="success" onClick={manejarLogout}>Cerrar Sesion</Button>)
+                                (<Button variant="success" onClick={manejarLogout} className="ms-auto">Cerrar Sesion</Button>)
                                 : (<Nav.Link href="/">Iniciar Sesion</Nav.Link>)}
                         </Nav>
                     </Navbar.Collapse>

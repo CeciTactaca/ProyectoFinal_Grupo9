@@ -1,3 +1,5 @@
+console.log("Archivo de rutas cargado correctamente");
+
 const express = require('express');
 const routes = express.Router();
 
@@ -13,7 +15,13 @@ const esquemaUsuario = new esquema({
 });
 
 const listaUsuarios = mongoose.model('users', esquemaUsuario);
+//prueba 
+routes.get('/ping', (req, res) => {
+  res.send("pong");
+});
 
+ 
+//ruta GER
 routes.get('/obtenerUsuario', async (req, res) => {
     try{
         const docs = await listaUsuarios.find();
@@ -24,5 +32,6 @@ routes.get('/obtenerUsuario', async (req, res) => {
         res.status(500).send({ message: "Error interno del servidor al obtener usuarios", error: error})
     }
 });
+
 
 module.exports = routes;
