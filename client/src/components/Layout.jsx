@@ -19,7 +19,8 @@ function Layout() {
     };
 
     return (
-        <>
+        <div className="layout">
+            <header>
             <Navbar className="navBg" variant="dark" expand="lg">
                 <Container>
                     <Navbar.Brand>Grupo 9</Navbar.Brand>
@@ -52,16 +53,17 @@ function Layout() {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+            </header>
 
             {/*En main se mostraran el resto de páginas*/}
-            <section>
+            <main>
                 <Outlet></Outlet>
-            </section>
+            </main>
             {/*Pie de pagina*/}
-            <footer className="bg-light text-dark text-center py-3">
+            <footer className="bg-primary text-light text-center py-3">
                 <p>Proyecto Final Fundamentos de Programacion Web 2025</p>
             </footer>
-        </>
+        </div>
     )
 };
 export default Layout;
