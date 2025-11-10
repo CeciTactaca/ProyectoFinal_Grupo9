@@ -1,28 +1,16 @@
-const express = require('express');
-const routes = express.Router();
-
 //modelo de datos
 const mongoose = require('mongoose');
 const esquema = mongoose.Schema;
 
 const esquemaUsuario = new esquema({
+    nombre: String,
+    apellido: String,
+    fechaNacimiento: Date,
+    estado: Boolean,
     username: String,
     password: String,
     rol: String,
-    name: String
+    puntaje: Number
 });
 
-const listaUsuarios = mongoose.model('users', esquemaUsuario);
-
-routes.get('/obtenerUsuario', async (req, res) => {
-    try{
-        const docs = await listaUsuarios.find();
-        res.send(docs);
-
-    }catch (error){
-        console.error("Error al obtener usuario", error);
-        res.status(500).send({ message: "Error interno del servidor al obtener usuarios", error: error})
-    }
-});
-
-module.exports = routes;
+module.exports = mongoose.model('users', esquemaUsuario);

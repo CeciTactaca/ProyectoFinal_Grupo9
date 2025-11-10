@@ -7,6 +7,7 @@ import ProtectorRutas from './components/ProtectorRutas'
 import Proyectos from './pages/Proyectos'
 import NoAutorizados from './pages/NoAutorizados'
 import Game from './pages/Game'
+import Registrar from './components/Registrar'
 
 
 function App() {
@@ -22,9 +23,11 @@ function App() {
             </ProtectorRutas>
           } />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path='/registrar' element={<Registrar />} />
           <Route path="/games" element={<Game />} />
           <Route path="*" element={<Error />} />
           <Route path="/unauthorized" element={<NoAutorizados />} />
+          
         </Route>
       </Routes>
   )
