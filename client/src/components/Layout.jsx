@@ -53,9 +53,9 @@ function Layout() {
                 </Navbar>
             </header>
             {/*En main se mostraran el resto de páginas*/}
-            <main>
+            <section>
                 <Outlet></Outlet>
-            </main>
+            </section>
             {/*Pie de pagina*/}
             <footer className="bg-light text-dark text-center py-3">
                 <p>Proyecto Final Fundamentos de Programacion Web 2025</p>

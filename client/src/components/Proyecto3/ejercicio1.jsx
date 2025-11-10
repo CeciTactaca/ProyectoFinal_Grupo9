@@ -16,7 +16,7 @@ function Ejercicio1() {
 
   return (
     <Container className="mt-5">
-      <h2>Ejercicio 1 - TP3</h2>
+      <h2>Ejercicio 1</h2>
       <Form>
         <Form.Group className="mb-3">
           <Form.Label>Primer número (o 'x')</Form.Label>
