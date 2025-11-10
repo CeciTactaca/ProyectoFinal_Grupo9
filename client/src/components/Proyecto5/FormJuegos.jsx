@@ -79,7 +79,7 @@ function FormJuegos() {
                     </Col>
                     <Col>
                         <Row>
-                            <Button variant="success" type="submit">Agregar Juego</Button>
+                            <Button variant="warning" type="submit">Agregar Juego</Button>
                         </Row>
                     </Col>
                 </Row>
@@ -100,7 +100,7 @@ function FormJuegos() {
                                     Tipo: {j.tipo}
                                 </div>
                             )}
-                            <Button variant="warning" onClick={() => modificar(j)}>Modificar</Button>
+                            <Button className="mt-2" variant="warning" onClick={() => modificar(j)}>Modificar</Button>
                         </li>
                     ))
                 }

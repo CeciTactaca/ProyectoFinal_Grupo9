@@ -26,54 +26,20 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="/proyecto5" element={
-          <ProtectorRutas roles={['ADMINISTRATIVO']}>
-            <Proyecto5 />
-          </ProtectorRutas>
-        } />
-        <Route path="/proyecto4" element={
-          <ProtectorRutas roles={['ADMINISTRATIVO']}>
-            <Proyecto4 />
-          </ProtectorRutas>
-        } />
-        <Route path="/proyecto3" element={
-          <ProtectorRutas roles={['ADMINISTRATIVO']}>
-            <Proyecto3 />
-          </ProtectorRutas>
-        } />
-        <Route path="/proyecto2" element={
-          <ProtectorRutas roles={['ADMINISTRATIVO']}>
-            <Proyecto2 />
-          </ProtectorRutas>
-        } />
-        <Route path="/ejercicio1" element={
-          <ProtectorRutas roles={['ADMINISTRATIVO']}>
-            <Ejercicio1 />
-          </ProtectorRutas>
-        } />
-        <Route path="/ejercicio2" element={
-          <ProtectorRutas roles={['ADMINISTRATIVO']}>
-            <Ejercicio2 />
-          </ProtectorRutas>
-        } />
-        <Route path="/ejercicio3" element={
-          <ProtectorRutas roles={['ADMINISTRATIVO']}>
-            <Ejercicio3 />
-          </ProtectorRutas>
-        } />
-        <Route path="/ejercicio4" element={
-          <ProtectorRutas roles={['ADMINISTRATIVO']}>
-            <Ejercicio4 />
-          </ProtectorRutas>
-        } />
-        <Route path="/ejercicio5" element={
-          <ProtectorRutas roles={['ADMINISTRATIVO']}>
-            <Ejercicio5 />
-          </ProtectorRutas>
-        } />
+        <Route path="/proyecto5" element={<Proyecto5 />} />
+        <Route path="/proyecto4" element={<Proyecto4 />} />
+        <Route path="/proyecto3" element={<Proyecto3 />} />
+        <Route path="/proyecto2" element={<Proyecto2 />} />
+        <Route path="/ejercicio1" element={<Ejercicio1 />} />
+        <Route path="/ejercicio2" element={<Ejercicio2 />} />
+        <Route path="/ejercicio3" element={<Ejercicio3 />} />
+        <Route path="/ejercicio4" element={<Ejercicio4 />} />
+        <Route path="/ejercicio5" element={<Ejercicio5 />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path='/registrar' element={<Registrar />} />
-        <Route path="/games" element={<Game />} />
+        <Route path="/games" element={<ProtectorRutas roles={['ALUMNO']}>
+          <Game />
+        </ProtectorRutas>} />
         <Route path="*" element={<Error />} />
         <Route path="/unauthorized" element={<NoAutorizados />} />
       </Route>

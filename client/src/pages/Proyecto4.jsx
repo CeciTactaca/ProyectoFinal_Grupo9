@@ -12,14 +12,14 @@ function Proyecto4() {
 
 
   return (
-    <Container className="contenedor">
+    <Container className="d-flex justify-content-center align-items-center mt-2 text-muted ">
       <Row>
         <Col>
           <Saludo nA={nombre} aA={apellido} edad={edad}></Saludo>
         </Col>
         <Col>
-          <JuegoColores />
-          <AdivinaNumero />
+        <Row><JuegoColores /></Row>
+        <Row><AdivinaNumero /></Row>         
         </Col>
       </Row>
 

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useAutorizacion } from "../hooks/useAutorizacion";
 import "../assets/css/navBar.css"
 import { Button } from "react-bootstrap";
+import { FaAdjust } from "react-icons/fa";
 
 function Layout() {
 
@@ -18,50 +19,59 @@ function Layout() {
         navigate('/');
     };
 
+    const irALogin = () => {
+        navigate('/');
+    };
+
     return (
-        <>
-            <Navbar className="navBg" variant="dark" expand="lg">
-                <Container>
-                    <Navbar.Brand>Grupo 9</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/aboutus">AboutUs</Nav.Link>
-                            <Nav.Link href="/registrar">Registrar</Nav.Link>
-                            {isAuthenticated && user?.rol === 'ADMINISTRATIVO'
-                                && (
-                                    <NavDropdown title="Proyectos" id="basic-nav-dropdown">
-                                        <NavDropdown.Item href="/proyecto2">Proyecto 2</NavDropdown.Item>
-                                        <NavDropdown.Item href="/proyecto3">Proyecto 3</NavDropdown.Item>
-                                        <NavDropdown.Item href="/proyecto4">Proyecto 4</NavDropdown.Item>
-                                        <NavDropdown.Item href="/proyecto5">Proyecto 5</NavDropdown.Item>
-                                    </NavDropdown>
-                                )}
-                            <NavDropdown title="More" id="basic-nav-dropdown">
+        <div className="layout">
+            <header>
+                {/*Navbar superior*/}
+                <Navbar className="navBg py-2" variant="dark" expand="lg">
+                    <Container>
+                        <Navbar.Brand href="/">Grupo 09</Navbar.Brand>
+                        <div>
+                            <Button variant="warning"><FaAdjust /></Button>
+                        </div>
+                    </Container>
+                </Navbar>
+                {/*Navbar inferior*/}
+                <Navbar className="navBg" variant="dark" expand="lg">
+                    <Container>
+                        <Navbar.Toggle aria-controls="main-navbar" />
+                        <Navbar.Collapse id="main-navbar">
+                            <Nav className="me-auto">
+                                <Nav.Link href="/">Home</Nav.Link>
+                                <Nav.Link href="/aboutus">AboutUs</Nav.Link>
+                                <NavDropdown title="Proyectos" id="basic-nav-dropdown">
+                                    <NavDropdown.Item href="/proyecto2">Proyecto 2</NavDropdown.Item>
+                                    <NavDropdown.Item href="/proyecto3">Proyecto 3</NavDropdown.Item>
+                                    <NavDropdown.Item href="/proyecto4">Proyecto 4</NavDropdown.Item>
+                                    <NavDropdown.Item href="/proyecto5">Proyecto 5</NavDropdown.Item>
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item href="/Error">Pagina de error</NavDropdown.Item>
+                                </NavDropdown>
 
                                 {isAuthenticated && user?.rol === 'ALUMNO'
-                                    && (<NavDropdown.Item href="/games">Game</NavDropdown.Item>)}
-                                <NavDropdown.Item href="/Error">Pagina de error</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                            </NavDropdown>
+                                    && (<Nav.Link href="/games">Game</Nav.Link>)}
+                            </Nav>
                             {isAuthenticated ?
                                 (<Button variant="warning" onClick={manejarLogout}>Cerrar Sesion</Button>)
-                                : (<Nav.Link href="/">Iniciar Sesion</Nav.Link>)}
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+                                : (<Button variant="warning" onClick={irALogin}>Iniciar Sesion</Button>)}
+                        </Navbar.Collapse> 
+                    </Container>
+                </Navbar>
+            </header>
 
             {/*En main se mostraran el resto de páginas*/}
-            <section>
+            <main>
                 <Outlet></Outlet>
-            </section>
+            </main>
             {/*Pie de pagina*/}
-            <footer className="bg-light text-dark text-center py-3">
+            <footer className="bg-primary text-light text-center py-3">
                 <p>Proyecto Final Fundamentos de Programacion Web 2025</p>
             </footer>
-        </>
+        </div>
     )
 };
 export default Layout;
