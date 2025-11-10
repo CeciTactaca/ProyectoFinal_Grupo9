@@ -1,8 +1,12 @@
+import Ejercicio1 from "../components/Proyecto3/ejercicio1.jsx";
+import FormMascotas from "../components/Proyecto3/FormMascotas.jsx";
+
 function Proyecto3() {
 
     return (
         <>
-            <h1>Proyecto 03</h1>
+            <Ejercicio1 />
+            <FormMascotas />
         </>
 
     )

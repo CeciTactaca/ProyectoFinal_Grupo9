@@ -15,13 +15,8 @@ const esquemaUsuario = new esquema({
 });
 
 const listaUsuarios = mongoose.model('users', esquemaUsuario);
-//prueba 
-routes.get('/ping', (req, res) => {
-  res.send("pong");
-});
-
  
-//ruta GER
+//ruta GET
 routes.get('/obtenerUsuario', async (req, res) => {
     try{
         const docs = await listaUsuarios.find();
