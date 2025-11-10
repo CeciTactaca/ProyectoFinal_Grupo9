@@ -47,7 +47,7 @@ function Proyecto2() {
     ];
 
     return (
-        <Container className="mt-5">
+        <Container className="mt-5 mb-5">
             <Row className="g-4">
                 {ejercicios.map((ej) => (
                     <Col key={ej.id} xs={12} sm={6} md={4} lg={3}>

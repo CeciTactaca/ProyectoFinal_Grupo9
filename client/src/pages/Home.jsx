@@ -1,14 +1,16 @@
 import { Login } from "../components/Login";
 import { Container, Row, Col } from "react-bootstrap";
 import logo from "../assets/img/logo.png";
+import { useAutorizacion } from "../hooks/useAutorizacion";
 
 function Home() {
+  const { isAuthenticated } = useAutorizacion();
+
 
   return (
-    <>
-      <Container className="py-4">
-      <div className="d-flex justify-content-start align-items-start flex-column flex-md-row">
-        <div className="text-center text-md-center mb-0 mb-md-0 d-flex flex-column align-items-center align-items-md-center">
+    <Container className="mt-5">
+      <Row>
+        <Col>
           <img
             src={logo}
             alt="Logo"
@@ -19,11 +21,14 @@ function Home() {
             Bienvenido a <strong>Nuestra Pagina</strong> , navega seguramente y descubre nuestros
             proyectos.
           </p>
-        </div>
-        <Login />
-      </div>
+        </Col>
+        {!isAuthenticated
+          && (
+            <Col>
+              <Login />
+            </Col>)}
+      </Row>
     </Container>
-    </>
   )
 };
 

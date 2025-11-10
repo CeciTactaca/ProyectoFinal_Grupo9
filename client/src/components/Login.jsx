@@ -40,10 +40,13 @@ export const Login = () => {
         }
     };
 
+    const irARegistrar = () => {
+        navigate("/registrar");
+    }
+
     return (
-        <>
             <Container
-                className="d-flex justify-content-end align-items-start vh-100 pad-4">
+                className="d-flex justify-content-end align-items-start pad-4">
                 <Card style={{ width: '100%', maxWidth: '450px' }} className="shadow-sm">
                     <Card.Body className="p-4">
                         <Card.Title as="h2" className="text-center mb-4">
@@ -59,7 +62,7 @@ export const Login = () => {
                             </Form.Group>
 
                             <Form.Group className="mb-4" controlId="formBasicPassword">
-                                <Form.Label><TbLockFilled size={20} color="black"/> Contraseña</Form.Label>
+                                <Form.Label><TbLockFilled size={20} color="black" /> Contraseña</Form.Label>
                                 <Form.Control
                                     type="password" placeholder="Ingresa tu contraseña"
                                     value={password} onChange={(e) => setPassword(e.target.value)}
@@ -74,11 +77,19 @@ export const Login = () => {
                             <Button variant="warning" type="submit" className="w-100 mt-4">
                                 Entrar
                             </Button>
+                            <Form.Group className="mb-2 mt-3">
+                                <Form.Text className="text-muted">
+                                    Eres nuevo? Registrate
+                                </Form.Text>
+                            </Form.Group>
+
+                            <Button variant="warning" className="w-100 mt-4" onClick={() => irARegistrar()}>
+                                Registrarse
+                            </Button>
                         </Form>
                     </ Card.Body>
                 </Card>
             </Container>
-        </>
     )
 
 };

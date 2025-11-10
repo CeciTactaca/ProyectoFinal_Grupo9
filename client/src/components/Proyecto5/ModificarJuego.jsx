@@ -30,7 +30,7 @@ export const ModificarJuego = ({ juego, funcion_modificar }) => {
                 Tipo = <input placeholder={juego.tipo} type="text" onChange={cambiarTipo} /> -
                 Estado = <input placeholder={juego.estado.toString()} type="text" onChange={cambiarEstado} />
 
-                <Button onClick={() => funcion_modificar(product_mod)}>Guardar</Button>
+                <Button className="mt-2" variant="warning" onClick={() => funcion_modificar(product_mod)}>Guardar</Button>
             </div>
         </>
     )
