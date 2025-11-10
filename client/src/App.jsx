@@ -72,7 +72,7 @@ function App() {
           </ProtectorRutas>
         } />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path='/registrar' element={<Registrar />} /  
+        <Route path='/registrar' element={<Registrar />} />
         <Route path="/games" element={<Game />} />
         <Route path="*" element={<Error />} />
         <Route path="/unauthorized" element={<NoAutorizados />} />
