@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Button, Col, Row } from "react-bootstrap";
+import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import axios from "axios";
 
 const PASSWORD_REGEX = {
@@ -75,74 +75,77 @@ function Registrar() {
                 setRegError(error.message || 'Ocurrio un error inesperado al registrar el usuario. Por favor, intente nuevamente.');
             }
 
-            setUsuario({ nombre: '', apellido: '',  username: '', password: '' });
+            setUsuario({ nombre: '', apellido: '', username: '', password: '' });
             setValidado(false)
             setErrorPassword({ minLength: false, uppercase: false, lowercase: false, number: false });
         }
     };
 
 
-        const passwordInvalido = Object.values(errorPassword).some(error => error);
+    const passwordInvalido = Object.values(errorPassword).some(error => error);
 
-        return (
-            <>
-                <Form noValidate validated={validado} onSubmit={manejarSubmit} className="p-4 border rounded shadow">
-                    <Row className="mb-3" >
-                        <Form.Group as={Col} md="6" className="mb-3" controlId="validacionNombre">
-                            <Form.Label>Nombre</Form.Label>
-                            <Form.Control
-                                required type="text" name="nombre" value={usuario.nombre} onChange={manejarCambio} placeholder="Ingrese su nombre" />
-                            <Form.Control.Feedback type="invalid">
-                                Por favor ingrese su nombre.
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                        <Form.Group as={Col} md="6" controlId="validacionApellido">
-                            <Form.Label>Apellido</Form.Label>
-                            <Form.Control
-                                required type="text" name="apellido" value={usuario.apellido} onChange={manejarCambio} placeholder="Ingrese su apellido" />
-                            <Form.Control.Feedback type="invalid">
-                                Por favor ingrese su apellido.
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                    </Row>
-                    <Form.Group controlId="validacionFechaNacimiento">
-                        <Form.Label>Fecha de Nacimiento</Form.Label>
+    return (
+        <>
+            <Container>
+                <h1>Registrar Usuario</h1>
+            </Container>
+            <Form noValidate validated={validado} onSubmit={manejarSubmit} className="p-4 border rounded shadow">
+                <Row className="mb-3" >
+                    <Form.Group as={Col} md="6" className="mb-3" controlId="validacionNombre">
+                        <Form.Label>Nombre</Form.Label>
                         <Form.Control
-                            required type="date" name="fechaNacimiento" value={usuario.fechaNacimiento} onChange={manejarCambio} placeholder="Ingrese su fecha de nacimiento" />
+                            required type="text" name="nombre" value={usuario.nombre} onChange={manejarCambio} placeholder="Ingrese su nombre" />
                         <Form.Control.Feedback type="invalid">
-                            Por favor ingrese su fecha de nacimiento.
+                            Por favor ingrese su nombre.
                         </Form.Control.Feedback>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="validacionUsername">
-                        <Form.Label>Nombre de Usuario</Form.Label>
+                    <Form.Group as={Col} md="6" controlId="validacionApellido">
+                        <Form.Label>Apellido</Form.Label>
                         <Form.Control
-                            required type="text" name="username" value={usuario.username} onChange={manejarCambio} placeholder="Ingrese su usuario" minLength="5" />
+                            required type="text" name="apellido" value={usuario.apellido} onChange={manejarCambio} placeholder="Ingrese su apellido" />
                         <Form.Control.Feedback type="invalid">
-                            El nombre del usuario debe ser requerido y tener al menos 5 caracteres.
+                            Por favor ingrese su apellido.
                         </Form.Control.Feedback>
                     </Form.Group>
-                    <Form.Group >
-                        <Form.Label>Contraseña</Form.Label>
-                        <Form.Control required type="password" name="password" value={usuario.password} onChange={manejarCambio} placeholder="Ingrese su contraseña" isInvalid={validado && passwordInvalido} />
-                        <Form.Control.Feedback type="invalid" className={validado && passwordInvalido ? 'd-block' : ''}>
-                            <p className="mb-1 text-bold">La contraseña debe cumplir con: </p>
-                            <small className={errorPassword.minLength ? 'text-danger' : 'text-succes'}>
-                                {errorPassword.minLength ? 'No cumple' : 'Cumple'}Al menos 8 caracteres</small><br />
-                            <small className={errorPassword.lowercase ? 'text-danger' : 'text-success'}>
-                                {errorPassword.lowercase ? 'No cumple' : 'Cumple'}Al menos una letra minúscula</small><br />
-                            <small className={errorPassword.uppercase ? 'text-danger' : 'text-success'}>
-                                {errorPassword.uppercase ? 'No cumple' : 'Cumple'}Al menos una letra mayúscula</small><br />
-                            <small className={errorPassword.number ? 'text-danger' : 'text-success'}>
-                                {errorPassword.number ? 'No cumple' : 'Cumple'}Al menos un número
-                            </small>
-                        </Form.Control.Feedback>
-                    </Form.Group>
-                    <Button type="submit" variant="warning" className="w-100 mt-4">Registrarse</Button>
-                </Form>
-            </>
-        )
-    }
+                </Row>
+                <Form.Group controlId="validacionFechaNacimiento">
+                    <Form.Label>Fecha de Nacimiento</Form.Label>
+                    <Form.Control
+                        required type="date" name="fechaNacimiento" value={usuario.fechaNacimiento} onChange={manejarCambio} placeholder="Ingrese su fecha de nacimiento" />
+                    <Form.Control.Feedback type="invalid">
+                        Por favor ingrese su fecha de nacimiento.
+                    </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="validacionUsername">
+                    <Form.Label>Nombre de Usuario</Form.Label>
+                    <Form.Control
+                        required type="text" name="username" value={usuario.username} onChange={manejarCambio} placeholder="Ingrese su usuario" minLength="5" />
+                    <Form.Control.Feedback type="invalid">
+                        El nombre del usuario debe ser requerido y tener al menos 5 caracteres.
+                    </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group >
+                    <Form.Label>Contraseña</Form.Label>
+                    <Form.Control required type="password" name="password" value={usuario.password} onChange={manejarCambio} placeholder="Ingrese su contraseña" isInvalid={validado && passwordInvalido} />
+                    <Form.Control.Feedback type="invalid" className={validado && passwordInvalido ? 'd-block' : ''}>
+                        <p className="mb-1 text-bold">La contraseña debe cumplir con: </p>
+                        <small className={errorPassword.minLength ? 'text-danger' : 'text-succes'}>
+                            {errorPassword.minLength ? 'No cumple' : 'Cumple'}Al menos 8 caracteres</small><br />
+                        <small className={errorPassword.lowercase ? 'text-danger' : 'text-success'}>
+                            {errorPassword.lowercase ? 'No cumple' : 'Cumple'}Al menos una letra minúscula</small><br />
+                        <small className={errorPassword.uppercase ? 'text-danger' : 'text-success'}>
+                            {errorPassword.uppercase ? 'No cumple' : 'Cumple'}Al menos una letra mayúscula</small><br />
+                        <small className={errorPassword.number ? 'text-danger' : 'text-success'}>
+                            {errorPassword.number ? 'No cumple' : 'Cumple'}Al menos un número
+                        </small>
+                    </Form.Control.Feedback>
+                </Form.Group>
+                <Button type="submit" variant="warning" className="w-100 mt-4">Registrarse</Button>
+            </Form>
+        </>
+    )
+}
 
-    export default Registrar;
+export default Registrar;
 
 

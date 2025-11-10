@@ -24,24 +24,31 @@ function Layout() {
                 <Container>
                     <Navbar.Brand>Grupo 9</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                         <Nav className="me-auto">
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/aboutus">AboutUs</Nav.Link>
                             <Nav.Link href="/registrar">Registrar</Nav.Link>
                             {isAuthenticated && user?.rol === 'ADMINISTRATIVO'
-                            && (<Nav.Link href="/proyectos">Proyectos</Nav.Link>)}
+                                && (<Nav.Link href="/proyectos">Proyectos</Nav.Link>)}
                             <NavDropdown title="More" id="basic-nav-dropdown">
-                                
-                                    {isAuthenticated && user?.rol === 'ALUMNO'
+
+                                {isAuthenticated && user?.rol === 'ALUMNO'
                                     && (<NavDropdown.Item href="/games">Game</NavDropdown.Item>)}
                                 <NavDropdown.Item href="/Error">Pagina de error</NavDropdown.Item>
                                 <NavDropdown.Divider />
                             </NavDropdown>
-                            {isAuthenticated ?
-                                (<Button variant="warning" onClick={manejarLogout}>Cerrar Sesion</Button>)
+                            {isAuthenticated && user? (
+                                <Nav className="align-items-center">
+                                    <span className="text-light me-4">
+                                     Bienvenido <strong>{user?.nombre || user?.username}</strong>
+                                    </span>
+                                    <Button variant="warning" onClick={manejarLogout}>Cerrar Sesión</Button>
+                                </Nav>
+                                )
                                 : (<Nav.Link href="/">Iniciar Sesion</Nav.Link>)}
                         </Nav>
+
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
