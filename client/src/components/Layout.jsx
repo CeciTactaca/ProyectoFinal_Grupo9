@@ -46,10 +46,34 @@ function Layout() {
                 </Container>
             </Navbar>
 
+                                {isAuthenticated && user?.rol === 'ADMINISTRATIVO'
+                                    && (
+                                        <NavDropdown title="Proyectos" id="basic-nav-dropdown">
+                                            <NavDropdown.Item href="/proyecto2">Proyecto 2</NavDropdown.Item>
+                                            <NavDropdown.Item href="/proyecto3">Proyecto 3</NavDropdown.Item>
+                                            <NavDropdown.Item href="/proyecto4">Proyecto 4</NavDropdown.Item>
+                                            <NavDropdown.Item href="/proyecto5">Proyecto 5</NavDropdown.Item>
+                                        </NavDropdown>
+                                    )}
+                                <Nav.Link href="/Error">Pagina de error</Nav.Link>
+                                <NavDropdown.Divider />
+                                {isAuthenticated ?
+                                    (<Button variant="success" onClick={manejarLogout} className="ms-auto">Cerrar Sesion</Button>)
+                                    : (<Nav.Link href="/">Iniciar Sesion</Nav.Link>)}
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Container>
+                </Navbar>
+            </header>
+            {/*En main se mostraran el resto de páginas*/}
             <section>
                 <Outlet></Outlet>
             </section>
-        </>
+            {/*Pie de pagina*/}
+            <footer className="bg-light text-dark text-center py-3">
+                <p>Proyecto Final Fundamentos de Programacion Web 2025</p>
+            </footer>
+        </div>
     )
 };
 export default Layout;

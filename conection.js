@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.connect
 
-    ("mongodb+srv://matias:matias10@cluster0.jrcwjzo.mongodb.net/tudivj?appName=Cluster0");
+    ("mongodb+srv://ceci-t:cecilia1@cluster0.jrcwjzo.mongodb.net/tudivj?appName=Cluster0");
 
 const objeto = mongoose.connection;
 
