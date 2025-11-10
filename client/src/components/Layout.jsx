@@ -28,6 +28,7 @@ function Layout() {
                         <Nav className="me-auto">
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/aboutus">AboutUs</Nav.Link>
+                            <Nav.Link href="/registrar">Registrar</Nav.Link>
                             {isAuthenticated && user?.rol === 'ADMINISTRATIVO'
                             && (<Nav.Link href="/proyectos">Proyectos</Nav.Link>)}
                             <NavDropdown title="More" id="basic-nav-dropdown">
@@ -38,7 +39,7 @@ function Layout() {
                                 <NavDropdown.Divider />
                             </NavDropdown>
                             {isAuthenticated ?
-                                (<Button variant="success" onClick={manejarLogout}>Cerrar Sesion</Button>)
+                                (<Button variant="warning" onClick={manejarLogout}>Cerrar Sesion</Button>)
                                 : (<Nav.Link href="/">Iniciar Sesion</Nav.Link>)}
                         </Nav>
                     </Navbar.Collapse>
