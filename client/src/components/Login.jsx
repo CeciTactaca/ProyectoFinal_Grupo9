@@ -43,8 +43,7 @@ export const Login = () => {
     return (
         <>
             <Container
-                fluid className="d-flex justify-content-end align-items-start"
-                style={{ minHeight: '100vh', backgroundColor: 'rgb(195, 253, 255)' }}>
+                className="d-flex justify-content-end align-items-start vh-100 pad-4">
                 <Card style={{ width: '100%', maxWidth: '450px' }} className="shadow-sm">
                     <Card.Body className="p-4">
                         <Card.Title as="h2" className="text-center mb-4">
@@ -72,7 +71,7 @@ export const Login = () => {
                                     {loginError}
                                 </ Alert>
                             )}
-                            <Button variant="primary" type="submit" className="w-100 mt-4">
+                            <Button variant="warning" type="submit" className="w-100 mt-4">
                                 Entrar
                             </Button>
                         </Form>

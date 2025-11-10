@@ -19,19 +19,32 @@ function Layout() {
     };
 
     return (
-        <div className="layout-wrapper">
-            <header>
-                <Navbar className="navBg" variant="dark" expand="lg">
-                    <Container>
-                        <Navbar.Brand>Grupo 9</Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="me-auto">
-                                <Nav.Link href="/">Home</Nav.Link>
-                                <Nav.Link href="/aboutus">AboutUs</Nav.Link>
-
-                                {isAuthenticated && user?.rol === 'ALUMNO'
-                                    && (<Nav.Link href="/games">Game</Nav.Link>)}
+        <>
+            <Navbar className="navBg" variant="dark" expand="lg">
+                <Container>
+                    <Navbar.Brand>Grupo 9</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <Nav.Link href="/">Home</Nav.Link>
+                            <Nav.Link href="/aboutus">AboutUs</Nav.Link>
+                            <Nav.Link href="/registrar">Registrar</Nav.Link>
+                            {isAuthenticated && user?.rol === 'ADMINISTRATIVO'
+                            && (<Nav.Link href="/proyectos">Proyectos</Nav.Link>)}
+                            <NavDropdown title="More" id="basic-nav-dropdown">
+                                
+                                    {isAuthenticated && user?.rol === 'ALUMNO'
+                                    && (<NavDropdown.Item href="/games">Game</NavDropdown.Item>)}
+                                <NavDropdown.Item href="/Error">Pagina de error</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                            </NavDropdown>
+                            {isAuthenticated ?
+                                (<Button variant="warning" onClick={manejarLogout}>Cerrar Sesion</Button>)
+                                : (<Nav.Link href="/">Iniciar Sesion</Nav.Link>)}
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
 
                                 {isAuthenticated && user?.rol === 'ADMINISTRATIVO'
                                     && (

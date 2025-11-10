@@ -16,6 +16,7 @@ import Ejercicio3 from './components/Proyecto2/Ejercicio3.jsx';
 import Ejercicio4 from './components/Proyecto2/Ejercicio4.jsx';
 import Ejercicio5 from './components/Proyecto2/Ejercicio5.jsx';
 
+import Registrar from './components/Registrar'
 
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
           </ProtectorRutas>
         } />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path='/registrar' element={<Registrar />} /  
         <Route path="/games" element={<Game />} />
         <Route path="*" element={<Error />} />
         <Route path="/unauthorized" element={<NoAutorizados />} />
