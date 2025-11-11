@@ -90,7 +90,8 @@ function Registrar() {
     const passwordInvalido = Object.values(errorPassword).some(error => error);
 
     return (
-        <Container>
+        <Container> 
+          <h1>Registrar Usuario</h1>
             <Form noValidate validated={validado} onSubmit={manejarSubmit} className="p-4 border rounded shadow">
                 <Row className="mb-3" >
                     <Form.Group as={Col} md="6" className="mb-3" controlId="validacionNombre">
