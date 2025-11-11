@@ -1,12 +1,18 @@
-import { Container } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function Error() {
 
-    return(
-        <Container>
-        <h1>Error al cargar la Pagina</h1>
-        <h1> <Link to="/"> Volver al HOME </Link></h1>
+    return (
+        <Container fluid className="d-flex alig-items-center justify-content-center" >
+            <Row className="text-center mt-5">
+                <Col>
+                    <h1>Error al encontrar la Pagina</h1>
+                    <Button variant="outline-primary" href="/">
+                        Volver al inicio
+                    </Button>
+                </Col>
+            </Row>
         </Container>
     )
 };

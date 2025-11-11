@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const PASSWORD_REGEX = {
     minLength: /^.{8,}$/,
@@ -11,6 +12,7 @@ const PASSWORD_REGEX = {
 };
 
 function Registrar() {
+    const navigate = useNavigate();
     const [regError, setRegError] = useState('');
     const [validado, setValidado] = useState(false);
     const [errorPassword, setErrorPassword] = useState({
@@ -81,14 +83,15 @@ function Registrar() {
         }
     };
 
+    const irALogin = () => {
+        navigate("/");
+    }
 
     const passwordInvalido = Object.values(errorPassword).some(error => error);
 
     return (
-        <>
-            <Container>
-                <h1>Registrar Usuario</h1>
-            </Container>
+        <Container> 
+          <h1>Registrar Usuario</h1>
             <Form noValidate validated={validado} onSubmit={manejarSubmit} className="p-4 border rounded shadow">
                 <Row className="mb-3" >
                     <Form.Group as={Col} md="6" className="mb-3" controlId="validacionNombre">
@@ -141,8 +144,18 @@ function Registrar() {
                     </Form.Control.Feedback>
                 </Form.Group>
                 <Button type="submit" variant="warning" className="w-100 mt-4">Registrarse</Button>
+
+                <Form.Group className="mb-2 mt-3">
+                    <Form.Text className="text-muted">
+                        Ya tienes una cuenta? 
+                    </Form.Text>
+                </Form.Group>
+
+                <Button variant="warning" className="w-100 mt-4" onClick={irALogin}>
+                    Iniciar Sesión
+                </Button>
             </Form>
-        </>
+        </Container>
     )
 }
 
