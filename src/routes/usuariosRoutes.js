@@ -16,6 +16,8 @@ router.get('/obtenerUsuario', async (req, res) => {
 
 router.post('/registrarUsuario', async (req, res) => {
     try {
+        console.log("REQ BODY:", req.body);
+        
         const nuevoUsuario = new usuarioModel(req.body);
         const datosGuardados = await nuevoUsuario.save();
 

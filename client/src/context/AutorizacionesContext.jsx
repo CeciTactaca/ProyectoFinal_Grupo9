@@ -79,8 +79,9 @@ export function AutorizacionesProvider({ children }) {
         isAuthenticated: !!user,
         login,
         logout,
-        usuariosBD
-    }), [user, login, logout, usuariosBD]);
+        usuariosBD,
+        buscarUsuarios
+    }), [user, login, logout, usuariosBD, buscarUsuarios]);
 
     //proveer el valor del contexto a los hijos
     return (

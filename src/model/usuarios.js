@@ -5,7 +5,10 @@ const esquema = mongoose.Schema;
 const esquemaUsuario = new esquema({
     nombre: String,
     apellido: String,
-    fechaNacimiento: Date,
+    fechaNacimiento: {
+        type: Date,
+        required: true
+    },
     estado: Boolean,
     username: String,
     password: String,
