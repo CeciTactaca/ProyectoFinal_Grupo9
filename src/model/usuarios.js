@@ -13,7 +13,13 @@ const esquemaUsuario = new esquema({
     username: String,
     password: String,
     rol: String,
-    puntaje: Number
+    puntajes: {
+        colores: Number,
+        animales: Number,
+        numeros: Number,
+        verbos: Number
+    },
+    puntajeTotal: Number
 });
 
 module.exports = mongoose.model('users', esquemaUsuario);

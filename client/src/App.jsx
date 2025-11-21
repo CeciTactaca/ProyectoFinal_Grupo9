@@ -5,7 +5,7 @@ import AboutUs from './pages/AboutUs'
 import Error from './pages/Error'
 import ProtectorRutas from './components/ProtectorRutas'
 import Proyecto5 from './pages/Proyecto5'
-import NoAutorizados from './pages/NoAutorizados'
+import PuntajeAlumno from './pages/PuntajeAlumno.jsx'
 import Game from './pages/Game'
 import Proyecto4 from './pages/Proyecto4'
 import Proyecto3 from './pages/Proyecto3'
@@ -17,6 +17,7 @@ import Ejercicio4 from './components/Proyecto2/Ejercicio4.jsx';
 import Ejercicio5 from './components/Proyecto2/Ejercicio5.jsx';
 
 import Registrar from './components/Registrar'
+import JuegoVerbos from './components/JuegoVerbos.jsx'
 
 
 function App() {
@@ -40,8 +41,11 @@ function App() {
         <Route path="/games" element={<ProtectorRutas roles={['ALUMNO']}>
           <Game />
         </ProtectorRutas>} />
+        <Route path="/verbos" element={<ProtectorRutas roles={['ALUMNO']}>
+          <JuegoVerbos />
+        </ProtectorRutas>} />
         <Route path="*" element={<Error />} />
-        <Route path="/unauthorized" element={<NoAutorizados />} />
+        <Route path="/puntaje" element={<PuntajeAlumno />} />
       </Route>
     </Routes>
   )

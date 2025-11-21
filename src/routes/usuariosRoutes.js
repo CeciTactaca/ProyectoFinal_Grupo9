@@ -3,6 +3,7 @@ const router = express.Router();
 
 const usuarioModel = require('../model/usuarios.js');
 
+//GET para pedir los usuarios de la BD
 router.get('/obtenerUsuario', async (req, res) => {
     try {
         const docs = await usuarioModel.find();
@@ -14,6 +15,7 @@ router.get('/obtenerUsuario', async (req, res) => {
     }
 });
 
+//POST crea un nuevo usuario
 router.post('/registrarUsuario', async (req, res) => {
     try {
         console.log("REQ BODY:", req.body);
@@ -28,6 +30,23 @@ router.post('/registrarUsuario', async (req, res) => {
         console.error("Error en /registrarUsuario", error);
         res.status(500).json({ success: false, message: "Error interno del servidor al registrar usuario", error: error });
     }
+});
+
+//Para cambiar el puntaje
+router.put('/:id/puntaje', async (req, res) => {
+  try {
+    const { puntajes, puntajeTotal } = req.body;
+    console.log('PUT recibido:', req.params.id,'puntajes:',puntajes, 'total:', puntajeTotal);
+    
+    const user = await usuarioModel.findByIdAndUpdate(
+      req.params.id,
+      { puntajes, puntajeTotal },
+      { new: true }
+    );
+    res.json(user);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
 });
 
 module.exports = router;

@@ -1,7 +1,19 @@
 import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { usePuntaje } from "../hooks/usePuntaje";
 
 function JuegoColores() {
+
+  const { actualizarPuntaje } = usePuntaje();
+  const navigate = useNavigate();
+
+  //Pasa al otro juego
+  const siguienteJuego = () => {
+    navigate("/verbos");
+  }
+  
+  //Array con objetos del juego
   const colores = [
     { nombre: "Red", codigo: "#ff0000ff" },
     { nombre: "Blue", codigo: "#0040ffff" },
@@ -19,7 +31,7 @@ function JuegoColores() {
   );
   const [puntos, setPuntos] = useState(0);
   const [mensaje, setMensaje] = useState("");
-  const [tiempo, setTiempo] = useState(10); // 1 minuto = 60 segundos
+  const [tiempo, setTiempo] = useState(30); //30 segundos
   const [juegoTerminado, setJuegoTerminado] = useState(false);
 
   // ⏱️ Efecto del temporizador
@@ -27,6 +39,7 @@ function JuegoColores() {
     if (tiempo <= 0) {
       setJuegoTerminado(true);
       setMensaje("¡Tiempo terminado!");
+      actualizarPuntaje("colores", puntos)
       return;
     }
 
@@ -56,7 +69,7 @@ function JuegoColores() {
     setJuegoTerminado(false);
     setColorActual(colores[Math.floor(Math.random() * colores.length)]);
   };
-  
+
   return (
     <div
       style={{
@@ -117,10 +130,12 @@ function JuegoColores() {
       <p style={{ marginTop: "10px", fontSize: "1.2rem" }}>{mensaje}</p>
 
       {juegoTerminado && (
+        <div>
         <Button
           onClick={reiniciarJuego}
           style={{
             marginTop: "20px",
+            marginRight: "5px",
             padding: "10px 20px",
             borderRadius: "8px",
             border: "none",
@@ -132,6 +147,23 @@ function JuegoColores() {
         >
           Reiniciar juego
         </Button>
+         <Button
+          onClick={siguienteJuego}
+          style={{
+            marginTop: "20px",
+            marginLeft: "5px",
+            padding: "10px 20px",
+            borderRadius: "8px",
+            border: "none",
+            backgroundColor: "#fff700ff",
+            color: "black",
+            fontSize: "1.2rem",
+            cursor: "pointer",
+          }}
+        >
+          Siguiente
+        </Button>
+        </div>
       )}
     </div>
   );
