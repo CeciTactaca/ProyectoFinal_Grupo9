@@ -1,5 +1,4 @@
 import { createContext, useState, useMemo, useCallback } from "react";
-//import usuarioGuardado from '../assets/data/usuarios.json'
 import { useEffect } from "react";
 import axios from "axios";
 
@@ -9,7 +8,6 @@ export const AutorizacionesContext = createContext(null);
 //Componente proveedor del contexto de autenticacion 
 export function AutorizacionesProvider({ children }) {
     const [usuariosBD, setUsuariosBD] = useState([]);
-    //const [user, setUser] = useState(null);
 
     const[user, setUser] = useState(() =>{
         try{
@@ -32,6 +30,7 @@ export function AutorizacionesProvider({ children }) {
     }, []);
 
     const login = useCallback((credencial) => {
+        
         console.log(usuariosBD);
         try {
             const usuarioEncontrado = usuariosBD.find(
@@ -76,12 +75,17 @@ export function AutorizacionesProvider({ children }) {
 
     const valorDelContexto = useMemo(() => ({
         user,
+        userNombre: user ? user.nombre : null,
+        userId: user ? user._id : null,
+        userPuntajes: user ? user.puntajes : null,
+        userTotal: user ? user.puntajeTotal : null,
         isAuthenticated: !!user,
         login,
         logout,
         usuariosBD,
-        buscarUsuarios
-    }), [user, login, logout, usuariosBD, buscarUsuarios]);
+        buscarUsuarios,
+        setUser
+    }), [user, setUser, login, logout, usuariosBD, buscarUsuarios]);
 
     //proveer el valor del contexto a los hijos
     return (

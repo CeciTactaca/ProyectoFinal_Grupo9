@@ -35,8 +35,9 @@ router.post('/registrarUsuario', async (req, res) => {
 //Para cambiar el puntaje
 router.put('/:id/puntaje', async (req, res) => {
   try {
-    console.log('PUT recibido:', req.params.id,'puntaje', req.body.puntaje);
     const { puntajes, puntajeTotal } = req.body;
+    console.log('PUT recibido:', req.params.id,'puntajes:',puntajes, 'total:', puntajeTotal);
+    
     const user = await usuarioModel.findByIdAndUpdate(
       req.params.id,
       { puntajes, puntajeTotal },

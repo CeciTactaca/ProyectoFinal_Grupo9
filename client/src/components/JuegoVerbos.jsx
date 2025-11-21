@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-//import { usePuntaje } from "../hooks/usePuntaje";
+import { usePuntaje } from "../hooks/usePuntaje";
 import doctor from "../assets/img/JuegoVerbos/doctor.png";
 import bailarina from "../assets/img/JuegoVerbos/bailarina.png";
 import ninios from "../assets/img/JuegoVerbos/ninios.png";
@@ -12,7 +12,7 @@ import soleado from "../assets/img/JuegoVerbos/soleado.png";
 function JuegoVerbos() {
 
     //Para guardar el puntaje del juego y el total
-    //const { actualizarPuntaje, guardarPuntaje } = usePuntaje();
+    const { actualizarPuntaje, guardarPuntaje } = usePuntaje();
 
     const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ function JuegoVerbos() {
         { oracion: "It ..... a cat.", correcta: "is", img: gato },
         { oracion: "It ..... raining.", correcta: "is not", img: soleado }
     ];
-    
+
     //Verbos son los botones con las opciones a elegir
     const verbos = ["is", "is not", "are", "are not"];
 
@@ -42,7 +42,7 @@ function JuegoVerbos() {
         if (tiempo <= 0) {
             setJuegoTerminado(true);
             setMensaje("¡Tiempo terminado!");
-            //actualizarPuntaje("verbos", puntos);
+            actualizarPuntaje("verbos", puntos);
             return;
         }
 
@@ -57,10 +57,6 @@ function JuegoVerbos() {
     const cambiarOracion = () => {
         if (indice < oraciones.length - 1) {
             setIndice(indice + 1);
-        } else {
-            setJuegoTerminado(true);
-            setMensaje("Juego terminado");
-            //actualizarPuntaje("verbos", puntos);
         }
     };
 
@@ -78,12 +74,20 @@ function JuegoVerbos() {
         if (juegoTerminado) return; // no permite seguir jugando
 
         if (opcion === oracionActual.correcta) {
-            setPuntos(puntos + 1);
+            const nuevosPuntos = puntos + 1;
+            setPuntos(nuevosPuntos);
             setMensaje("✅ ¡Correcto!");
-            cambiarOracion();
+            if (indice === oraciones.length - 1) {
+                setJuegoTerminado(true);
+                setMensaje("Juego terminado");
+                actualizarPuntaje("verbos", nuevosPuntos);
+            } else {
+                cambiarOracion();
+            }
         } else {
             setMensaje("❌ Incorrecto, intenta de nuevo");
         }
+
     };
 
     const reiniciarJuego = () => {
@@ -95,20 +99,17 @@ function JuegoVerbos() {
     };
 
     //Se pasa a ver el puntaje final y guarda los nuevos puntajes
-   /* const irPuntaje = () => {
+    const irPuntaje = () => {
         guardarPuntaje();
         navigate("/puntaje");
-    }*/
+    }
 
 
     return (
         <Container className="d-flex flex-column justify-content-center align-items-center text-center">
             <Row className="mt-3">
                 <h1>Elige la forma correcta del verbo To Be</h1>
-                <p style={{ fontSize: "1.2rem" }}>Puntos: {puntos}</p>
-                <p style={{ fontSize: "1.2rem" }}>
-                    Tiempo restante: <strong>{tiempo}s</strong>
-                </p>
+                <p style={{ fontSize: "1.2rem" }}>Puntos: {puntos}   Tiempo restante: <strong>{tiempo}s</strong></p>
                 <p style={{ marginTop: "10px", fontSize: "1.2rem" }}>{mensaje}</p>
             </Row>
             {oracionActual && (
@@ -159,9 +160,9 @@ function JuegoVerbos() {
                     <Button onClick={reiniciarJuego} variant="warning" className="mt-3" size="lg">
                         Reiniciar
                     </Button>
-                    {/*<Button onClick={irPuntaje} variant="warning" className="mt-3" size="lg">
+                    <Button onClick={irPuntaje} variant="warning" className="mt-3" size="lg">
                         Terminar
-                    </Button>*/}
+                    </Button>
                 </Row>
             )}
         </Container>

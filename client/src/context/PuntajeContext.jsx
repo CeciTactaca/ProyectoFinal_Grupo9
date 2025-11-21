@@ -6,7 +6,7 @@ export const PuntajeContext = createContext();
 
 export function PuntajeProvider({ children }) {
 
-    const { userId } = useAutorizacion();  //El id para guardar el puntaje
+    const { userId, setUser, buscarUsuarios } = useAutorizacion();  //El id para guardar el puntaje
     const [puntajes, setPuntajes] = useState({});//los puntajes de cada juego
     const [puntajeTotal, setPuntajeTotal] = useState(0); //puntaje total sumado
 
@@ -23,10 +23,14 @@ export function PuntajeProvider({ children }) {
     const guardarPuntaje = useCallback(async () => {
         if (!userId) return;
         try {
+            console.log("entro a guardar", puntajes, puntajeTotal);
             const res = await axios.put(`/api/${userId}/puntaje`,
                 { puntajes, puntajeTotal }
             );
             console.log("Puntajes guardados: ", res.data);
+
+            setUser(res.data);
+            await buscarUsuarios();
         } catch (error) {
             console.error("Error al cargar puntaje", error);
         }

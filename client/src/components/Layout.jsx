@@ -60,8 +60,10 @@ function Layout() {
                                         <NavDropdown.Item as={Link} to="/Error">Pagina de error</NavDropdown.Item>
                                     </NavDropdown>
 
-                                    {isAuthenticated && user?.rol === 'ALUMNO'
-                                        && (<Nav.Link as={Link} to="/games">Game</Nav.Link>)}
+                                    {isAuthenticated && user?.rol === 'ALUMNO' && 
+                                    (<Nav.Link as={Link} to="/games">Game</Nav.Link>)}
+                                    {isAuthenticated && user?.rol === 'ALUMNO' && 
+                                    (<Nav.Link as={Link} to="/puntaje">Puntaje</Nav.Link>)}
                                 </Nav>
                                 {isAuthenticated ?
                                     (<Button variant="warning" onClick={manejarLogout}>Cerrar Sesion</Button>)
