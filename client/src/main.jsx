@@ -5,15 +5,18 @@ import { AutorizacionesProvider } from './context/AutorizacionesContext.jsx'
 import App from './App.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { ModoProvider } from './context/ModoContext.jsx'
+import { PuntajeProvider } from './context/PuntajeContext.jsx'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ModoProvider>
       <AutorizacionesProvider>
-        <BrowserRouter>
+        <PuntajeProvider>
+          <BrowserRouter>
           <App />
         </BrowserRouter>
+        </PuntajeProvider>
       </AutorizacionesProvider>
     </ModoProvider>
   </StrictMode>

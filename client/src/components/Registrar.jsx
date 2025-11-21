@@ -33,7 +33,8 @@ function Registrar() {
         username: "",
         password: "",
         rol: "ALUMNO",
-        puntaje: 0
+        puntajes: {colores: 0, animales: 0, numeros: 0, verbos: 0},
+        puntajeTotal: 0
     });
 
     const manejarCambio = (e) => {
