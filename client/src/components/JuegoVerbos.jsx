@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { usePuntaje } from "../hooks/usePuntaje";
+//imagenes que se mostraran
 import doctor from "../assets/img/JuegoVerbos/doctor.png";
 import bailarina from "../assets/img/JuegoVerbos/bailarina.png";
 import ninios from "../assets/img/JuegoVerbos/ninios.png";

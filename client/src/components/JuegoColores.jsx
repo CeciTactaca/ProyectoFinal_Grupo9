@@ -39,7 +39,7 @@ function JuegoColores() {
     if (tiempo <= 0) {
       setJuegoTerminado(true);
       setMensaje("¡Tiempo terminado!");
-      actualizarPuntaje("colores", puntos)
+      actualizarPuntaje("colores", puntos);
       return;
     }
 
@@ -73,13 +73,10 @@ function JuegoColores() {
   return (
     <div
       style={{
-        minHeight: "100vh",
-        background: "linear-gradient(135deg, #a7f0ff, #0e8bff)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        color: "black",
         fontFamily: "Poppins, sans-serif",
       }}
     >
@@ -133,14 +130,12 @@ function JuegoColores() {
         <div>
         <Button
           onClick={reiniciarJuego}
+          variant="warning"
+          size="lg"
           style={{
             marginTop: "20px",
             marginRight: "5px",
             padding: "10px 20px",
-            borderRadius: "8px",
-            border: "none",
-            backgroundColor: "#fff700ff",
-            color: "black",
             fontSize: "1.2rem",
             cursor: "pointer",
           }}
@@ -149,14 +144,12 @@ function JuegoColores() {
         </Button>
          <Button
           onClick={siguienteJuego}
+          variant="warning"
+          size="lg"
           style={{
             marginTop: "20px",
             marginLeft: "5px",
             padding: "10px 20px",
-            borderRadius: "8px",
-            border: "none",
-            backgroundColor: "#fff700ff",
-            color: "black",
             fontSize: "1.2rem",
             cursor: "pointer",
           }}

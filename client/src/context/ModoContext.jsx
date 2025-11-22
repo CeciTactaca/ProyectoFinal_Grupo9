@@ -7,15 +7,7 @@ export const ModoProvider = ({ children }) => {
   const initialModo = localStorage.getItem('modo') === 'dark' ? 'dark' : 'light';
   const [modo, setModo] = useState(initialModo);
 
-  // useEffect para saber si tiene un tema y guardarlo
-  useEffect(() => {
-    const savedModo = localStorage.getItem('modo');
-    if (savedModo === 'light' || savedModo === 'dark') {
-      setModo(savedModo);
-    }
-  }, []);
-
-  useEffect(() => {
+   useEffect(() => {
     localStorage.setItem('modo', modo);
   }, [modo]);
 
