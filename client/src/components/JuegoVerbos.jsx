@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { usePuntaje } from "../hooks/usePuntaje";
+//imagenes que se mostraran
 import doctor from "../assets/img/JuegoVerbos/doctor.png";
 import bailarina from "../assets/img/JuegoVerbos/bailarina.png";
 import ninios from "../assets/img/JuegoVerbos/ninios.png";
@@ -156,14 +157,36 @@ function JuegoVerbos() {
                 ))}
             </Row>
             {juegoTerminado && (
-                <Row className="mb-2">
-                    <Button onClick={reiniciarJuego} variant="warning" className="mt-3" size="lg">
+                <div>
+                    <Button
+                        onClick={reiniciarJuego}
+                        variant="warning"
+                        size="lg"
+                        style={{
+                            marginTop: "20px",
+                            marginRight: "5px",
+                            padding: "10px 20px",
+                            fontSize: "1.2rem",
+                            cursor: "pointer",
+                        }}
+                    >
                         Reiniciar
                     </Button>
-                    <Button onClick={irPuntaje} variant="warning" className="mt-3" size="lg">
+                    <Button
+                        onClick={irPuntaje}
+                        variant="warning"
+                        size="lg"
+                        style={{
+                            marginTop: "20px",
+                            marginLeft: "5px",
+                            padding: "10px 20px",
+                            fontSize: "1.2rem",
+                            cursor: "pointer",
+                        }}
+                    >
                         Terminar
                     </Button>
-                </Row>
+                </div>
             )}
         </Container>
     )

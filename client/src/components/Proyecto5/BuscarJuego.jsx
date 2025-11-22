@@ -29,7 +29,7 @@ export const BuscarJuego = ({ juegos }) => {
             />
             <Row>
                 <Col className="mt-2">
-                    <Button variant="warning" OnClick={handleClick}>Buscar</Button>
+                    <Button variant="warning" onClick={handleClick}>Buscar</Button>
                 </Col >
             </Row>
 
