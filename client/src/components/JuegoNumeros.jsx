@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { usePuntaje } from "../hooks/usePuntaje";
+import { FaVolumeUp } from "react-icons/fa";
 //Audios que se usaran
 import tres from "../assets/sounds/JuegoNumeros/tres.wav";
 import siete from "../assets/sounds/JuegoNumeros/siete.wav";
@@ -13,7 +14,7 @@ import veinticinco from "../assets/sounds/JuegoNumeros/veinticinco.wav";
 function JuegoNumeros() {
 
     //Para guardar el puntaje del juego y el total
-    const { actualizarPuntaje, guardarPuntaje } = usePuntaje();
+    const { actualizarPuntaje } = usePuntaje();
 
     const navigate = useNavigate();
 
@@ -48,12 +49,12 @@ function JuegoNumeros() {
     const numActual = numeros[indice]; //Opciones de numero por ronda
     const [puntos, setPuntos] = useState(0);
     const [mensaje, setMensaje] = useState("");
-    const [tiempo, setTiempo] = useState(30);
+    const [tiempo, setTiempo] = useState(60); //1minuto de juego
     const [juegoTerminado, setJuegoTerminado] = useState(false);
     const [juegoIniciado, setJuegoIniciado] = useState(false);
 
 
-    //Efecto del temporizador total de 30 seg
+    //Efecto del temporizador total de 60 seg
     useEffect(() => {
         if (!juegoIniciado || juegoTerminado) return;
         if (tiempo <= 0) {
@@ -85,12 +86,12 @@ function JuegoNumeros() {
         }
     }, [indice, juegoIniciado, juegoTerminado]);
 
-    //Cambio de sonido cada 5 seg
+    //Cambio de sonido cada 10 seg
     useEffect(() => {
         if (!juegoIniciado || juegoTerminado) return;
         const cambio = setInterval(() => {
             cambiarSonido();
-        }, 5000);
+        }, 10000);
         return () => clearInterval(cambio);
     }, [indice, juegoTerminado, juegoIniciado]);
 
@@ -117,7 +118,7 @@ function JuegoNumeros() {
 
     const reiniciarJuego = () => {
         setPuntos(0);
-        setTiempo(30);
+        setTiempo(60);
         setMensaje("");
         setJuegoTerminado(false);
         setIndice(0);
@@ -127,15 +128,13 @@ function JuegoNumeros() {
     const iniciarJuego = () => {
         setJuegoIniciado(true);
         setIndice(0);
-        setTiempo(30);
+        setTiempo(60);
         setPuntos(0);
         setMensaje("");
-        //ejecutarSonido(sonidos[0].sonido); // primer sonido al iniciar
     };
 
     //Se pasa siguiente juego y guarda los nuevos puntajes
     const irVerbos = () => {
-        guardarPuntaje();
         navigate("/verbos");
     }
 
@@ -184,7 +183,7 @@ function JuegoNumeros() {
                             (e.currentTarget.style.transform = "scale(1)")
                         }
                     >
-                        Play
+                       <FaVolumeUp /> Play
                     </Button>
                 </Row>
             )}

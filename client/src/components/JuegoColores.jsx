@@ -10,7 +10,7 @@ function JuegoColores() {
 
   //Pasa al otro juego
   const siguienteJuego = () => {
-    navigate("/verbos");
+    navigate("/numeros");
   }
   
   //Array con objetos del juego

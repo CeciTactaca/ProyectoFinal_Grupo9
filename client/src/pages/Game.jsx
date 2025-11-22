@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
 import JuegoColores from "../components/JuegoColores.jsx";
-import JuegoNumeros from "../components/JuegoNumeros.jsx";
+import JuegoAnimales from "../components/JuegoAnimales.jsx";
         
 function Game() {
 
@@ -8,7 +8,7 @@ function Game() {
         <Container>
         <h1>GAMES</h1>
         <JuegoColores />
-        <JuegoNumeros />
+        <JuegoAnimales />
         </Container>
     )
 };

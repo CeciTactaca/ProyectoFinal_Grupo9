@@ -18,6 +18,7 @@ import Ejercicio5 from './components/Proyecto2/Ejercicio5.jsx';
 
 import Registrar from './components/Registrar'
 import JuegoVerbos from './components/JuegoVerbos.jsx'
+import JuegoNumeros from './components/JuegoNumeros.jsx'
 
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
         </ProtectorRutas>} />
         <Route path="/verbos" element={<ProtectorRutas roles={['ALUMNO']}>
           <JuegoVerbos />
+        </ProtectorRutas>} />
+        <Route path="/numeros" element={<ProtectorRutas roles={['ALUMNO']}>
+          <JuegoNumeros />
         </ProtectorRutas>} />
         <Route path="*" element={<Error />} />
         <Route path="/puntaje" element={<PuntajeAlumno />} />
