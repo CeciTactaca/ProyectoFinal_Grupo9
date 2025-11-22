@@ -10,7 +10,7 @@ function JuegoColores() {
 
   //Pasa al otro juego
   const siguienteJuego = () => {
-    navigate("/numeros");
+    navigate("/games/animales");
   }
   
   //Array con objetos del juego
@@ -31,7 +31,7 @@ function JuegoColores() {
   );
   const [puntos, setPuntos] = useState(0);
   const [mensaje, setMensaje] = useState("");
-  const [tiempo, setTiempo] = useState(30); //30 segundos
+  const [tiempo, setTiempo] = useState(20); //20 segundos
   const [juegoTerminado, setJuegoTerminado] = useState(false);
 
   // ⏱️ Efecto del temporizador
@@ -64,7 +64,7 @@ function JuegoColores() {
 
   const reiniciarJuego = () => {
     setPuntos(0);
-    setTiempo(60);
+    setTiempo(20);
     setMensaje("");
     setJuegoTerminado(false);
     setColorActual(colores[Math.floor(Math.random() * colores.length)]);
@@ -134,6 +134,7 @@ function JuegoColores() {
           size="lg"
           style={{
             marginTop: "20px",
+            marginBottom: "5px",
             marginRight: "5px",
             padding: "10px 20px",
             fontSize: "1.2rem",
@@ -148,6 +149,7 @@ function JuegoColores() {
           size="lg"
           style={{
             marginTop: "20px",
+            marginBottom: "5px",
             marginLeft: "5px",
             padding: "10px 20px",
             fontSize: "1.2rem",

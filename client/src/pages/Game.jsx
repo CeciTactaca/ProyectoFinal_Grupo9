@@ -1,14 +1,12 @@
 import { Container } from "react-bootstrap";
-import JuegoColores from "../components/JuegoColores.jsx";
-import JuegoAnimales from "../components/JuegoAnimales.jsx";
+import { Outlet } from "react-router-dom";
         
 function Game() {
 
     return(
         <Container>
         <h1>GAMES</h1>
-        <JuegoColores />
-        <JuegoAnimales />
+        <Outlet />
         </Container>
     )
 };

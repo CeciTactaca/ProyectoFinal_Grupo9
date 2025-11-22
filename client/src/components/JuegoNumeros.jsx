@@ -135,7 +135,7 @@ function JuegoNumeros() {
 
     //Se pasa siguiente juego y guarda los nuevos puntajes
     const irVerbos = () => {
-        navigate("/verbos");
+        navigate("/games/verbos");
     }
 
 

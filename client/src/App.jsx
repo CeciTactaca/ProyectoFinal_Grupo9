@@ -19,6 +19,8 @@ import Ejercicio5 from './components/Proyecto2/Ejercicio5.jsx';
 import Registrar from './components/Registrar'
 import JuegoVerbos from './components/JuegoVerbos.jsx'
 import JuegoNumeros from './components/JuegoNumeros.jsx'
+import JuegoColores from './components/JuegoColores.jsx'
+import JuegoAnimales from './components/JuegoAnimales.jsx'
 
 
 function App() {
@@ -41,13 +43,12 @@ function App() {
         <Route path='/registrar' element={<Registrar />} />
         <Route path="/games" element={<ProtectorRutas roles={['ALUMNO']}>
           <Game />
-        </ProtectorRutas>} />
-        <Route path="/verbos" element={<ProtectorRutas roles={['ALUMNO']}>
-          <JuegoVerbos />
-        </ProtectorRutas>} />
-        <Route path="/numeros" element={<ProtectorRutas roles={['ALUMNO']}>
-          <JuegoNumeros />
-        </ProtectorRutas>} />
+        </ProtectorRutas>}>
+          <Route index element={<JuegoColores />} />
+          <Route path="/games/animales" element={<JuegoAnimales />} />
+          <Route path="/games/numeros" element={<JuegoNumeros />} />
+          <Route path="/games/verbos" element={<JuegoVerbos />} />
+        </Route>
         <Route path="*" element={<Error />} />
         <Route path="/puntaje" element={<PuntajeAlumno />} />
       </Route>

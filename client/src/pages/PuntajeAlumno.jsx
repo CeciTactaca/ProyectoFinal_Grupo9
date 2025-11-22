@@ -10,24 +10,26 @@ function PuntajeFinal() {
 
     //De acuerdo al puntaje es el nivel de ingles
     const nivelIngles = (total) => {
-        if (total <= 10){
-            return "Nivel Inicial";
+        if (total <= 10) {
+            return "Principiante";
         } else if (total <= 20) {
-            return "Nivel Intermedio";
+            return "Inicial";
+        } else if (total <= 30) {
+            return "Intermedio";
         } else {
-            return "Nivel Superior";
+            return "Avanzado";
         }
     }
 
     return (
         <Container className="text-center mt-5">
             <h1>Puntaje Final de {userNombre}</h1>
-            <p>Colores: {userPuntajes?.colores}</p>
-            <p>Animales: {userPuntajes?.animales}</p>
-            <p>Números: {userPuntajes?.numeros}</p>
-            <p>Verbos: {userPuntajes?.verbos}</p>
+            <p>Juego Colores: {userPuntajes?.colores}</p>
+            <p>Juego Animales: {userPuntajes?.animales}</p>
+            <p>Juego Números: {userPuntajes?.numeros}</p>
+            <p>Juego Verbos: {userPuntajes?.verbos}</p>
             <h5>Puntaje Total: {userTotal}</h5>
-            <h3>{nivelIngles(userTotal)}</h3>
+            <h3>Tu nivel de ingles es : {nivelIngles(userTotal)}</h3>
         </Container>
     )
 };
