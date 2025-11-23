@@ -18,7 +18,7 @@ function JuegoAnimales() {
         { nombre: "Giraffe", animal: "🦒" },
         { nombre: "Octopus", animal: "🐙" },
         { nombre: "Cow", animal: "🐄" },
-        { nombre: "Lion", animal: "🦁" ,},
+        { nombre: "Lion", animal: "🦁", },
     ];
 
     const [animalActual, setAnimalActual] = useState(); //emoji que se muestra
@@ -31,9 +31,15 @@ function JuegoAnimales() {
     //Generar nueva ronda de animales
     const nuevaRonda = () => {
         const animalRandom = animales[Math.floor(Math.random() * animales.length)];
-        const nombreRandom = animales[Math.floor(Math.random() * animales.length)].nombre;
+
+        let nombreRandom;
+        do {
+            nombreRandom = animales[Math.floor(Math.random() * animales.length)].nombre;
+        } while (nombreRandom === nombreActual);
+
         setAnimalActual(animalRandom);
         setNombreActual(nombreRandom);
+
     };
 
     useEffect(() => {
@@ -72,7 +78,10 @@ function JuegoAnimales() {
             setMensaje("❌ Incorrecto, intenta de nuevo");
         }
 
-        nuevaRonda();
+        //Leve pausa antes de cambiar
+        setTimeout(() => {
+            nuevaRonda();
+        }, 100);
 
     };
 
@@ -94,7 +103,7 @@ function JuegoAnimales() {
             <Row className="mt-3">
                 <h1>Juego de animales</h1>
                 <p style={{ marginTop: "5px", fontSize: "1.2rem" }}>¿El nombre corresponde con el dibujo?</p>
-                <p style={{ fontSize: "1.2rem" }}>Puntos: {puntos}      Tiempo restante: <strong>{tiempo}s</strong></p>
+                <p style={{ fontSize: "1.2rem" }}>🏆 Puntos: {puntos}      ⏱ Tiempo restante: <strong>{tiempo}s</strong></p>
                 <p style={{ fontSize: "1.2rem" }}>{mensaje}</p>
             </Row>
             <Row
@@ -139,7 +148,7 @@ function JuegoAnimales() {
                         style={{
                             marginLeft: "5px",
                             padding: "10px 20px",
-                            fontSize: "1.2rem",                            
+                            fontSize: "1.2rem",
                             cursor: juegoTerminado ? "not-allowed" : "pointer",
                             opacity: juegoTerminado ? 0.5 : 1,
                             transition: "transform 0.2s ease"

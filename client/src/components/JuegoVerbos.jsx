@@ -12,8 +12,8 @@ import soleado from "../assets/img/JuegoVerbos/soleado.png";
 
 function JuegoVerbos() {
 
-    //Para guardar el puntaje del juego y el total
-    const { actualizarPuntaje, guardarPuntaje } = usePuntaje();
+    //Para guardar el puntaje del juego
+    const { actualizarPuntaje} = usePuntaje();
 
     const navigate = useNavigate();
 
@@ -109,7 +109,7 @@ function JuegoVerbos() {
         <Container className="d-flex flex-column justify-content-center align-items-center text-center">
             <Row className="mt-3">
                 <h1>Elige la forma correcta del verbo To Be</h1>
-                <p style={{ fontSize: "1.2rem" }}>Puntos: {puntos}   Tiempo restante: <strong>{tiempo}s</strong></p>
+                <p style={{ fontSize: "1.2rem" }}>🏆 Puntos: {puntos}   ⏱ Tiempo restante: <strong>{tiempo}s</strong></p>
                 <p style={{ marginTop: "10px", fontSize: "1.2rem" }}>{mensaje}</p>
             </Row>
             {oracionActual && (

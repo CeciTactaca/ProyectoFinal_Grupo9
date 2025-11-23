@@ -12,7 +12,7 @@ function JuegoColores() {
   const siguienteJuego = () => {
     navigate("/games/animales");
   }
-  
+
   //Array con objetos del juego
   const colores = [
     { nombre: "Red", codigo: "#ff0000ff" },
@@ -33,6 +33,17 @@ function JuegoColores() {
   const [mensaje, setMensaje] = useState("");
   const [tiempo, setTiempo] = useState(20); //20 segundos
   const [juegoTerminado, setJuegoTerminado] = useState(false);
+
+
+  //Generar el color y que no se repita
+  const nuevoColor = () => {
+    let nuevoRandom;
+    do {
+      nuevoRandom = colores[Math.floor(Math.random() * colores.length)];
+    } while (nuevoRandom.nombre === colorActual.nombre);
+
+    setColorActual(nuevoRandom);
+  };
 
   // ⏱️ Efecto del temporizador
   useEffect(() => {
@@ -56,7 +67,11 @@ function JuegoColores() {
     if (nombre === colorActual.nombre) {
       setPuntos(puntos + 1);
       setMensaje("✅ ¡Correcto!");
-      setColorActual(colores[Math.floor(Math.random() * colores.length)]);
+
+      setTimeout(() => {
+        nuevoColor();
+      }, 100);
+
     } else {
       setMensaje("❌ Incorrecto, intenta de nuevo");
     }
@@ -67,7 +82,6 @@ function JuegoColores() {
     setTiempo(20);
     setMensaje("");
     setJuegoTerminado(false);
-    setColorActual(colores[Math.floor(Math.random() * colores.length)]);
   };
 
   return (
@@ -81,9 +95,9 @@ function JuegoColores() {
       }}
     >
       <h1> JUEGO DE COLORES EN INGLES</h1>
-      <p style={{ fontSize: "1.2rem" }}>Puntos: {puntos}</p>
+      <p style={{ fontSize: "1.2rem" }}>🏆 Puntos: {puntos}</p>
       <p style={{ fontSize: "1.2rem" }}>
-        Tiempo restante: <strong>{tiempo}s</strong>
+        ⏱ Tiempo restante: <strong>{tiempo}s</strong>
       </p>
 
       <div
@@ -128,36 +142,36 @@ function JuegoColores() {
 
       {juegoTerminado && (
         <div>
-        <Button
-          onClick={reiniciarJuego}
-          variant="warning"
-          size="lg"
-          style={{
-            marginTop: "20px",
-            marginBottom: "5px",
-            marginRight: "5px",
-            padding: "10px 20px",
-            fontSize: "1.2rem",
-            cursor: "pointer",
-          }}
-        >
-          Reiniciar juego
-        </Button>
-         <Button
-          onClick={siguienteJuego}
-          variant="warning"
-          size="lg"
-          style={{
-            marginTop: "20px",
-            marginBottom: "5px",
-            marginLeft: "5px",
-            padding: "10px 20px",
-            fontSize: "1.2rem",
-            cursor: "pointer",
-          }}
-        >
-          Siguiente
-        </Button>
+          <Button
+            onClick={reiniciarJuego}
+            variant="warning"
+            size="lg"
+            style={{
+              marginTop: "20px",
+              marginBottom: "5px",
+              marginRight: "5px",
+              padding: "10px 20px",
+              fontSize: "1.2rem",
+              cursor: "pointer",
+            }}
+          >
+            Reiniciar juego
+          </Button>
+          <Button
+            onClick={siguienteJuego}
+            variant="warning"
+            size="lg"
+            style={{
+              marginTop: "20px",
+              marginBottom: "5px",
+              marginLeft: "5px",
+              padding: "10px 20px",
+              fontSize: "1.2rem",
+              cursor: "pointer",
+            }}
+          >
+            Siguiente
+          </Button>
         </div>
       )}
     </div>
