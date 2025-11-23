@@ -140,7 +140,7 @@ function JuegoNumeros() {
         if (indice === sonidos.length - 1) {
             setJuegoTerminado(true);
             setMensaje("Juego terminado");
-            actualizarPuntaje("numeros", nuevosPuntos);
+            actualizarPuntaje("numeros", puntos);
         } else {
             cambiarSonido();
         }
