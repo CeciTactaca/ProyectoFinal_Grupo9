@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const esquema = mongoose.Schema;
 
+//definicion del esquema de usuario
 const esquemaUsuario = new esquema({
     nombre: String,
     apellido: String,
@@ -17,7 +18,8 @@ const esquemaUsuario = new esquema({
         colores: Number,
         animales: Number,
         numeros: Number,
-        verbos: Number
+        verbos: Number,
+        cuerpoHumano: Number,
     },
     puntajeTotal: Number
 });

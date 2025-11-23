@@ -5,6 +5,7 @@ mongoose.connect
 
 const objeto = mongoose.connection;
 
+//Eventos de conexion
 objeto.on('connected', () => {
     console.log("Conectado a la base de datos del grupo 9");
 });
