@@ -18,7 +18,9 @@ export function AutorizacionesProvider({ children }) {
             return null;
         }
     });
+    
 
+    //Funcion para buscar los usuarios en la base de datos
     const buscarUsuarios = useCallback(async () => {
         try{
             const res = await axios.get('/api/obtenerUsuario');
@@ -28,7 +30,8 @@ export function AutorizacionesProvider({ children }) {
             console.error("Error al cargar jugadores:", err);
         }
     }, []);
-
+    
+    //Funcion para loguear al usuario
     const login = useCallback((credencial) => {
         
         console.log(usuariosBD);
@@ -54,7 +57,8 @@ export function AutorizacionesProvider({ children }) {
             return { success: false, message: 'Ocurrio un error inesperado durante el login' };
         }
     }, [usuariosBD]);
-
+    
+    //Funcion para desloguear al usuario
     const logout = useCallback(() => {
         setUser(null);
     }, []);

@@ -5,8 +5,8 @@ import { Container } from "react-bootstrap";
 function PuntajeFinal() {
 
     const { userNombre, userPuntajes, userTotal } = useAutorizacion();
-    console.log(userNombre);
-    console.log(userPuntajes);
+    
+    console.log(userTotal);
 
     //De acuerdo al puntaje es el nivel de ingles
     const nivelIngles = (total) => {
@@ -28,6 +28,7 @@ function PuntajeFinal() {
             <p>Juego Animales: {userPuntajes?.animales}</p>
             <p>Juego Números: {userPuntajes?.numeros}</p>
             <p>Juego Verbos: {userPuntajes?.verbos}</p>
+            <p>Juego Cuerpo Humano: {userPuntajes?.cuerpoHumano}</p>
             <h5>Puntaje Total: {userTotal}</h5>
             <h3>Tu nivel de ingles es : {nivelIngles(userTotal)}</h3>
         </Container>

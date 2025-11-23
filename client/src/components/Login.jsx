@@ -12,7 +12,9 @@ export const Login = () => {
     const [loginError, setLoginError] = useState('');
     const navigate = useNavigate();
     const { login, isAuthenticated, user } = useAutorizacion();
+    
 
+    //Redirige segun el rol del usuario
     useEffect(() => {
         if (isAuthenticated) {
             if (user?.rol === 'ADMINISTRATIVO') {
@@ -24,7 +26,8 @@ export const Login = () => {
             }
         }
     }, [isAuthenticated, navigate, user]);
-
+    
+    //Maneja el submit del login
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoginError(''); //Limpia errores anteriores 

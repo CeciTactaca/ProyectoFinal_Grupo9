@@ -9,7 +9,9 @@ export function PuntajeProvider({ children }) {
     const { userId, setUser, buscarUsuarios } = useAutorizacion();  //El id para guardar el puntaje
     const [puntajes, setPuntajes] = useState({});//los puntajes de cada juego
     const [puntajeTotal, setPuntajeTotal] = useState(0); //puntaje total sumado
+    
 
+    //Función para actualizar el puntaje de un juego y el total
     const actualizarPuntaje = useCallback((juego, puntos) => {
         setPuntajes((prev) => {
             const nuevos = { ...prev, [juego]: puntos };
@@ -19,7 +21,7 @@ export function PuntajeProvider({ children }) {
         });
     }, [puntajes, puntajeTotal]);
 
-
+    //Función para guardar el puntaje en la base de datos
     const guardarPuntaje = useCallback(async () => {
         if (!userId) return;
         try {
@@ -35,7 +37,9 @@ export function PuntajeProvider({ children }) {
             console.error("Error al cargar puntaje", error);
         }
     }, [userId, puntajes, puntajeTotal]);
+    
 
+    // Memoizar el valor del contexto para evitar renders innecesarios
     const valorDelContexto = useMemo(() => ({
         puntajes,
         actualizarPuntaje,

@@ -18,6 +18,7 @@ function JuegoAnimales() {
         { nombre: "Giraffe", animal: "🦒" },
         { nombre: "Octopus", animal: "🐙" },
         { nombre: "Cow", animal: "🐄" },
+        { nombre: "Lion", animal: "🦁" ,},
     ];
 
     const [animalActual, setAnimalActual] = useState(); //emoji que se muestra
@@ -66,9 +67,9 @@ function JuegoAnimales() {
         if ((esCorrecto && opcion === "correcto") || (!esCorrecto && opcion === "incorrecto")) {
             const nuevosPuntos = puntos + 1;
             setPuntos(nuevosPuntos);
-            setMensaje("✅");
+            setMensaje("✅ ¡Correcto!");
         } else {
-            setMensaje("❌");
+            setMensaje("❌ Incorrecto, intenta de nuevo");
         }
 
         nuevaRonda();
@@ -117,7 +118,6 @@ function JuegoAnimales() {
                             marginRight: "5px",
                             padding: "10px 20px",
                             fontSize: "1.2rem",
-                            cursor: "pointer",
                             cursor: juegoTerminado ? "not-allowed" : "pointer",
                             opacity: juegoTerminado ? 0.5 : 1,
                             transition: "transform 0.2s ease"
@@ -139,8 +139,7 @@ function JuegoAnimales() {
                         style={{
                             marginLeft: "5px",
                             padding: "10px 20px",
-                            fontSize: "1.2rem",
-                            cursor: "pointer",
+                            fontSize: "1.2rem",                            
                             cursor: juegoTerminado ? "not-allowed" : "pointer",
                             opacity: juegoTerminado ? 0.5 : 1,
                             transition: "transform 0.2s ease"

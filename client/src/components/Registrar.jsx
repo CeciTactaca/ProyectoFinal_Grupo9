@@ -33,7 +33,7 @@ function Registrar() {
         username: "",
         password: "",
         rol: "ALUMNO",
-        puntajes: {colores: 0, animales: 0, numeros: 0, verbos: 0},
+        puntajes: {colores: 0, animales: 0, numeros: 0, verbos: 0, cuerpoHumano: 0},
         puntajeTotal: 0
     });
 

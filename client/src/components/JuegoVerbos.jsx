@@ -99,10 +99,9 @@ function JuegoVerbos() {
         setIndice(0);
     };
 
-    //Se pasa a ver el puntaje final y guarda los nuevos puntajes
-    const irPuntaje = () => {
-        guardarPuntaje();
-        navigate("/puntaje");
+    
+    const irCuerpoHumano = () => {
+        navigate("/games/cuerpohumano");
     }
 
 
@@ -173,7 +172,7 @@ function JuegoVerbos() {
                         Reiniciar
                     </Button>
                     <Button
-                        onClick={irPuntaje}
+                        onClick={irCuerpoHumano}
                         variant="warning"
                         size="lg"
                         style={{
@@ -184,7 +183,7 @@ function JuegoVerbos() {
                             cursor: "pointer",
                         }}
                     >
-                        Terminar
+                        Siguiente Juego
                     </Button>
                 </div>
             )}
